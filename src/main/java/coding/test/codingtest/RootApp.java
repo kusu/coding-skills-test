@@ -4,7 +4,7 @@ package coding.test.codingtest;
  * Hello world!
  *
  */
-public class App 
+public class RootApp 
 {
     public static void main( String[] args )
     {
