@@ -22,7 +22,7 @@ public class TohMain extends JPanel {
 	private static final long serialVersionUID = 9174402512355596895L;
 
 	private void move(int n, DIR dir, Tower to) {
-		Graphics g = image.getGraphics();
+		Graphics g = this.getGraphics();
 
 		int basex = 100 + 150 / 2 - 7;
 		int basey = 300 + (n - 1) * 5;
