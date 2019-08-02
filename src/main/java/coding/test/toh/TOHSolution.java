@@ -67,7 +67,7 @@ public class TOHSolution extends JPanel {
         for (int i = 0; i < numDisks; i++) {
             disks[i] = new Disk(i + 1);
 
-            int recty = 275 + (i) * 5;
+            int recty = 300 - (numDisks - i) * 5;
             int rectx = 168 - (i) * 5;
 
             disks[i].setX(rectx);
