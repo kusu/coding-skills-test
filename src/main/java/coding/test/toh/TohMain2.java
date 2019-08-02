@@ -72,8 +72,6 @@ public class TohMain2 extends JPanel {
     }
 
     public void render(Graphics g) {
-        drawTowers();
-        drawDisks();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.drawImage(image, 0, 0, this);
@@ -195,7 +193,7 @@ public class TohMain2 extends JPanel {
 
     private void sleep() {
         try {
-            Thread.sleep(10);
+            Thread.sleep(25);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
