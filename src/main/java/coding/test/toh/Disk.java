@@ -1,15 +1,26 @@
 package coding.test.toh;
 
-import java.awt.Graphics;
+public class Disk {
+    private int diskNumber; // diskNumber from 0 to maxDisks.
+    private int x, y;
 
-import javax.swing.JPanel;
+    public Disk(int diskNum) {
+        this.diskNumber = diskNum;
+    }
 
-public class Disk extends JPanel {
-	private int diskNumber; // diskNumber from 0 to maxDisks.
-	private int x, y;
+    public int getX() {
+        return x;
+    }
 
-	@Override
-	public void paintComponent(Graphics g) {
-		g.drawLine(x, y, diskNumber + 2, 5);
-	}
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 }
