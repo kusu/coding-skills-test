@@ -22,10 +22,6 @@ public class TohMain2 extends JPanel {
 
         Graphics g = image.getGraphics();
 
-        g.setColor(Color.black);
-        g.clearRect(0, 0, 800, 600);
-        g.fillRect(0, 0, 800, 600);
-
         g.setColor(Color.blue);
         g.drawRect(100, 300, 150, 5);
         g.drawRect(300, 300, 150, 5);
@@ -72,9 +68,19 @@ public class TohMain2 extends JPanel {
     }
 
     public void render(Graphics g) {
+
+        // create black background
+        g.setColor(Color.black);
+        g.clearRect(0, 0, 800, 600);
+        g.fillRect(0, 0, 800, 600);
+
+        // fill the disks
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.drawImage(image, 0, 0, this);
+
+        // re-draw towers
+        drawTowers();
     }
 
     public void update(Graphics g) {
