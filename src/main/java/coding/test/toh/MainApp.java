@@ -13,7 +13,7 @@ public class MainApp extends JFrame {
 
         MainApp app = new MainApp();
 
-        TohMain2 toh = new TohMain2(5);
+        TOHSolution toh = new TOHSolution(3);
 
         app.getContentPane().add(toh);
 

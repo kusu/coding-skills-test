@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class TohMain2 extends JPanel {
+public class TOHSolution extends JPanel {
 
     enum DIR {
         LEFT, RIGHT, UP, DOWN
@@ -15,7 +15,7 @@ public class TohMain2 extends JPanel {
 
     private Disk[] disks;
 
-    public TohMain2(int disksNum) {
+    public TOHSolution(int disksNum) {
         this.numDisks = disksNum;
         image = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB_PRE);
         createDisks();
