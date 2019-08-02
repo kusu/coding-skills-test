@@ -13,9 +13,12 @@ public class TohMain2 extends JPanel {
     private int numDisks;
     private BufferedImage image;
 
-    public TohMain2(int disks) {
-        this.numDisks = disks;
+    private Disk[] disks;
+
+    public TohMain2(int disksNum) {
+        this.numDisks = disksNum;
         image = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB_PRE);
+        createDisks();
     }
 
     public void drawTowers() {
@@ -37,33 +40,29 @@ public class TohMain2 extends JPanel {
 
     }
 
-    private Disk[] createDisks() {
+    private void createDisks() {
 
-        Disk[] disks = new Disk[numDisks];
+        disks = new Disk[numDisks];
 
         for (int i = 0; i < numDisks; i++) {
             disks[i] = new Disk(i + 1);
 
-            int recty = 300 + (i) * 5;
+            int recty = 275 + (i) * 5;
             int rectx = 168 - (i) * 5;
 
             disks[i].setX(rectx);
             disks[i].setY(recty);
         }
 
-        return disks;
-
     }
 
-    public void drawDisks() {
+    public void drawDisks2() {
 
         Graphics g = image.getGraphics();
 
         g.setColor(Color.blue);
-        int basex = 168;
-        int basey = 300 - numDisks * 5;
         for (int i = 0; i < numDisks; i++) {
-            g.drawRect(basex - i * 5, basey + i * 5, 20 + i * 10, 5);
+            g.drawRect(disks[i].getX(), disks[i].getY(), 20 + i * 10, 5);
         }
     }
 
@@ -81,6 +80,7 @@ public class TohMain2 extends JPanel {
 
         // re-draw towers
         drawTowers();
+        drawDisks2();
     }
 
     public void update(Graphics g) {
@@ -186,8 +186,6 @@ public class TohMain2 extends JPanel {
     }
 
     public void solvePuzzle() {
-        Disk[] disks = createDisks();
-
         Tower from = new Tower(0);
         from.setLevel(numDisks);
         Tower to = new Tower(2);
@@ -199,7 +197,7 @@ public class TohMain2 extends JPanel {
 
     private void sleep() {
         try {
-            Thread.sleep(25);
+            Thread.sleep(20);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

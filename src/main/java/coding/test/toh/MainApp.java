@@ -14,7 +14,6 @@ public class MainApp extends JFrame {
         MainApp app = new MainApp();
 
         TohMain2 toh = new TohMain2(5);
-        toh.drawDisks();
 
         app.getContentPane().add(toh);
 
