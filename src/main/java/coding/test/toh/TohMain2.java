@@ -21,7 +21,27 @@ public class TohMain2 extends JPanel {
         createDisks();
     }
 
-    public void drawTowers() {
+    public void solvePuzzle() {
+        Tower from = new Tower(0);
+        from.setLevel(numDisks);
+        Tower to = new Tower(2);
+        to.setLevel(0);
+        Tower temp = new Tower(1);
+        temp.setLevel(0);
+        solve(numDisks, disks, from, to, temp);
+    }
+
+    private void solve(int n, Disk[] disks, Tower from, Tower to, Tower temp) {
+        if (n == 1) {
+            moveDisk(1, disks, from, to);
+            return;
+        }
+        solve(n - 1, disks, from, temp, to);
+        moveDisk(n, disks, from, to);
+        solve(n - 1, disks, temp, to, from);
+    }
+
+    private void drawTowers() {
 
         Graphics g = image.getGraphics();
 
@@ -56,7 +76,7 @@ public class TohMain2 extends JPanel {
 
     }
 
-    public void drawDisks2() {
+    private void drawDisks() {
 
         Graphics g = image.getGraphics();
 
@@ -66,28 +86,7 @@ public class TohMain2 extends JPanel {
         }
     }
 
-    public void render(Graphics g) {
-
-        // create black background
-        g.setColor(Color.black);
-        g.clearRect(0, 0, 800, 600);
-        g.fillRect(0, 0, 800, 600);
-
-        // fill the disks
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        g.drawImage(image, 0, 0, this);
-
-        // re-draw towers
-        drawTowers();
-        drawDisks2();
-    }
-
-    public void update(Graphics g) {
-        paint(g);
-    }
-
-    public void move(int n, Disk[] disks, DIR dir, Tower to) {
+    private void move(int n, Disk[] disks, DIR dir, Tower to) {
         Graphics g = image.getGraphics();
 
         int basey = disks[n - 1].getY();
@@ -175,32 +174,36 @@ public class TohMain2 extends JPanel {
 
     }
 
-    private void solve(int n, Disk[] disks, Tower from, Tower to, Tower temp) {
-        if (n == 1) {
-            moveDisk(1, disks, from, to);
-            return;
-        }
-        solve(n - 1, disks, from, temp, to);
-        moveDisk(n, disks, from, to);
-        solve(n - 1, disks, temp, to, from);
-    }
-
-    public void solvePuzzle() {
-        Tower from = new Tower(0);
-        from.setLevel(numDisks);
-        Tower to = new Tower(2);
-        to.setLevel(0);
-        Tower temp = new Tower(1);
-        temp.setLevel(0);
-        solve(numDisks, disks, from, to, temp);
-    }
-
     private void sleep() {
         try {
             Thread.sleep(20);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+    }
+
+    private void render(Graphics g) {
+
+        // create black background
+        g.setColor(Color.black);
+        g.clearRect(0, 0, 800, 600);
+        g.fillRect(0, 0, 800, 600);
+
+        // fill the disks
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        g.drawImage(image, 0, 0, this);
+
+        // re-draw towers
+        drawTowers();
+
+        // re-draw disks that were overlayed by other disk movements
+        drawDisks();
+    }
+
+    @Override
+    public void update(Graphics g) {
+        paint(g);
     }
 
     @Override
