@@ -53,4 +53,15 @@ class ListNode {
 
         return n1;
     }
+
+    public static class PartialSum {
+
+        public PartialSum(int carry, ListNode sum){
+            this.carry=carry;
+            this.sum=sum;
+        }
+
+        ListNode sum;
+        int carry;
+    }
 }
