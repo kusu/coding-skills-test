@@ -2,9 +2,9 @@ package coding.test.ctci.tree;
 
 class TreeNode<T> {
 
-    TreeNode left;
+    TreeNode<T> left;
 
-    TreeNode right;
+    TreeNode<T> right;
 
     T data;
 
