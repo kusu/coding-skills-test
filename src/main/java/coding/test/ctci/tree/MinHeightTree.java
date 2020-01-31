@@ -18,9 +18,15 @@ public class MinHeightTree {
         TreeNode<Integer> root = new TreeNode<>(array[mid]);
 
         root.left = buildTree(array, start, mid - 1);
+        if (root.left != null) {
+            root.left.parent = root;
+        }
 
         root.right = buildTree(array, mid + 1, end);
 
+        if (root.right != null) {
+            root.right.parent = root;
+        }
         return root;
 
     }
