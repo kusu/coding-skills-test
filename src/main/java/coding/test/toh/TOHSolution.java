@@ -46,17 +46,17 @@ public class TOHSolution extends JPanel {
         Graphics g = image.getGraphics();
 
         g.setColor(Color.blue);
-        g.drawRect(100, 300, 150, 5);
-        g.drawRect(300, 300, 150, 5);
-        g.drawRect(500, 300, 150, 5);
+        g.fillRect(100, 300, 150, 5);
+        g.fillRect(300, 300, 150, 5);
+        g.fillRect(500, 300, 150, 5);
 
         int towerx = 100 + 150 / 2;
         int towerHeight = 150;
         int towery = 150;
 
-        g.drawRect(towerx, towery, 5, towerHeight);
-        g.drawRect(towerx + 200, towery, 5, towerHeight);
-        g.drawRect(towerx + 400, towery, 5, towerHeight);
+        g.fillRect(towerx, towery, 5, towerHeight);
+        g.fillRect(towerx + 200, towery, 5, towerHeight);
+        g.fillRect(towerx + 400, towery, 5, towerHeight);
 
     }
 
